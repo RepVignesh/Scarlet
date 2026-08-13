@@ -1,11 +1,11 @@
-import requests
+import httpx
 
 from ..schemas.header import HTTPHeader
 
 
-def get_headers(url: str) -> HTTPHeader:
-
-    response = requests.get(url, timeout=10)
+async def get_headers(url: str) -> HTTPHeader:
+    async with httpx.AsyncClient(timeout=10) as client:
+        response = await client.get(url) 
 
     return HTTPHeader(
         server=response.headers.get("Server"),
