@@ -7,6 +7,6 @@ router = APIRouter()
 
 
 @router.get("/headers", response_model=HTTPHeader)
-def fetch_headers(url: str):
+async def fetch_headers(url: str):
 
-    return get_headers(url)
+    return await get_headers(url)
