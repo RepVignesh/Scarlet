@@ -1,22 +1,22 @@
 import {
-  AnalyticsIcon,
-  HomeIcon,
-  InboxIcon,
-  ProjectsIcon,
-  SettingsIcon,
-  TeamIcon,
-} from "@/app/components/icons";
+  BarChart3,
+  FolderKanban,
+  Home,
+  Inbox,
+  Settings,
+  Users,
+} from "lucide-react";
 import type { NavSection } from "@/app/components/Sidebar.types";
 
 export const sections: NavSection[] = [
   {
     items: [
-      { id: "home", label: "Home", href: "/", icon: <HomeIcon width={20} height={20} /> },
+      { id: "home", label: "Home", href: "/", icon: <Home size={20} /> },
       {
         id: "inbox",
         label: "Inbox",
         href: "/inbox",
-        icon: <InboxIcon width={20} height={20} />,
+        icon: <Inbox size={20} />,
         badge: 4,
       },
     ],
@@ -28,19 +28,19 @@ export const sections: NavSection[] = [
         id: "projects",
         label: "Projects",
         href: "/projects",
-        icon: <ProjectsIcon width={20} height={20} />,
+        icon: <FolderKanban size={20} />,
       },
       {
         id: "analytics",
         label: "Analytics",
         href: "/analytics",
-        icon: <AnalyticsIcon width={20} height={20} />,
+        icon: <BarChart3 size={20} />,
       },
       {
         id: "team",
         label: "Team",
         href: "/team",
-        icon: <TeamIcon width={20} height={20} />,
+        icon: <Users size={20} />,
       },
     ],
   },
@@ -51,7 +51,7 @@ export const sections: NavSection[] = [
         id: "settings",
         label: "Settings",
         href: "/settings",
-        icon: <SettingsIcon width={20} height={20} />,
+        icon: <Settings size={20} />,
       },
     ],
   },
