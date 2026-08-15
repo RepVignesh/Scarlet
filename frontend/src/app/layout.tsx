@@ -25,6 +25,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           sections={sections}
           workspaceName="Scarlet"
           workspaceSubtitle="An Automatic Footprinting tool"
+          workspaceIcon={
+            <img
+              src="/Icon.jpg"
+              alt="Scarlet"
+              width={20}
+              height={20}
+              style={{ borderRadius: 4 }}
+            />
+          }
         />
 
         <main>{children}</main>
