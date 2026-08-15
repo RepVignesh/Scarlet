@@ -1,14 +1,22 @@
 .sidebar {
   --bg-sidebar: #ffffff;
-  --border: #e7e5e0;
-  --text-primary: #1c1b19;
-  --text-secondary: #706c65;
-  --text-tertiary: #a5a19a;
-  --accent: #1f5c4d;
-  --accent-soft: #e8f1ee;
-  --accent-soft-hover: #dbe9e4;
+  --bg-hover: #f7f7f7;
+  --bg-active: #f0f0f0;
+
+  --border: #e5e5e5;
+  --border-subtle: #eeeeee;
+
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-tertiary: #999999;
+
+  --accent: #111111;
+  --accent-soft: #f0f0f0;
+  --accent-soft-hover: #e5e5e5;
+
   --radius-sm: 6px;
   --radius-md: 10px;
+
   --rail-x: 34px;
   --width-expanded: 264px;
   --width-collapsed: 76px;
@@ -28,8 +36,6 @@
 .sidebar.collapsed {
   width: var(--width-collapsed);
 }
-
-/* ---------- Header ---------- */
 
 .header {
   display: flex;
@@ -77,8 +83,6 @@
   text-overflow: ellipsis;
 }
 
-/* ---------- Search ---------- */
-
 .search {
   display: flex;
   align-items: center;
@@ -91,7 +95,9 @@
   color: var(--text-secondary);
   font-size: 13px;
   cursor: pointer;
-  transition: border-color 150ms ease, background 150ms ease;
+  transition:
+    border-color 150ms ease,
+    background 150ms ease;
 }
 
 .search:hover {
@@ -114,32 +120,12 @@
   background: #ffffff;
 }
 
-/* ---------- Nav ---------- */
-
 .nav {
   position: relative;
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 4px 14px 12px;
-}
-
-.rail {
-  position: absolute;
-  top: 4px;
-  bottom: 12px;
-  left: calc(var(--rail-x) + 14px - 1px);
-  width: 2px;
-}
-
-.railIndicator {
-  position: absolute;
-  left: 0;
-  width: 2px;
-  border-radius: 2px;
-  background: var(--accent);
-  transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1),
-    height 220ms cubic-bezier(0.4, 0, 0.2, 1), opacity 150ms ease;
 }
 
 .section {
@@ -178,7 +164,9 @@
   font-size: 13.5px;
   font-weight: 500;
   white-space: nowrap;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
 }
 
 .item:hover {
@@ -224,8 +212,6 @@
   border-color: transparent;
   background: #ffffff;
 }
-
-/* ---------- Footer ---------- */
 
 .footer {
   border-top: 1px solid var(--border);
@@ -285,7 +271,9 @@
   border-radius: var(--radius-sm);
   color: var(--text-tertiary);
   background: transparent;
-  transition: background 150ms ease, color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease;
 }
 
 .iconButton:hover {
@@ -305,7 +293,10 @@
   color: var(--text-secondary);
   font-size: 12.5px;
   font-weight: 500;
-  transition: background 150ms ease, color 150ms ease, border-color 150ms ease;
+  transition:
+    background 150ms ease,
+    color 150ms ease,
+    border-color 150ms ease;
 }
 
 .collapseButton:hover {
@@ -319,8 +310,6 @@
   padding: 0;
 }
 
-/* ---------- Focus states ---------- */
-
 .item:focus-visible,
 .search:focus-visible,
 .iconButton:focus-visible,
@@ -329,11 +318,8 @@
   outline-offset: 2px;
 }
 
-/* ---------- Reduced motion ---------- */
-
 @media (prefers-reduced-motion: reduce) {
   .sidebar,
-  .railIndicator,
   .search,
   .item,
   .iconButton,
