@@ -4,7 +4,7 @@ import { useMemo, useState } from "react";
 import { usePathname } from "next/navigation";
 import { SidebarProps } from "./Sidebar.types";
 import styles from "./Sidebar.module.css";
-import { ChevronsLeftIcon } from "./icons";
+import { ChevronLeft } from "lucide-react";
 import { NavItem } from "./Sidebar.types";
 
 export default function Sidebar({
@@ -91,7 +91,7 @@ export default function Sidebar({
           onClick={() => setCollapsed((c) => !c)}
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          <ChevronsLeftIcon
+          <ChevronLeft
             width={16}
             height={16}
             style={{
