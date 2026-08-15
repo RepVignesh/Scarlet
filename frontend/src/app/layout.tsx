@@ -1,9 +1,9 @@
-'use client'
+"use client";
 import { Space_Grotesk, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
-import Sidebar from "@/app/components/Sidebar"
-import { sections } from "@/app/configs/Sections"
+import Sidebar from "@/app/components/Sidebar";
+import { sections } from "@/app/configs/Sections";
 
 const display = Space_Grotesk({
   subsets: ["latin"],
@@ -20,9 +20,15 @@ const body = Inter({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
-      <body>{children}</body>
-      
+      <body>
+        <Sidebar
+          sections={sections}
+          workspaceName="Scarlet"
+          workspaceSubtitle="An Automatic Footprinting tool"
+        />
+
+        <main>{children}</main>
+      </body>
     </html>
-    
   );
 }
