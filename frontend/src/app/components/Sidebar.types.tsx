@@ -17,6 +17,7 @@ export interface SidebarProps {
   sections: NavSection[];
   workspaceName: string;
   workspaceSubtitle?: string;
+  workspaceIcon?: React.ReactNode;
   activePath?: string;
   defaultCollapsed?: boolean;
   onNavigate?: (item: NavItem) => void;

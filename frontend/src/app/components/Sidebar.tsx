@@ -11,6 +11,7 @@ export default function Sidebar({
   sections,
   workspaceName,
   workspaceSubtitle,
+  workspaceIcon,
   activePath,
   defaultCollapsed = false,
   onNavigate,
@@ -33,7 +34,7 @@ export default function Sidebar({
     >
       <div className={styles.header}>
         <div className={styles.mark} aria-hidden="true">
-          {workspaceName.slice(0, 1).toUpperCase()}
+          {workspaceIcon ?? workspaceName.slice(0, 1).toUpperCase()}
         </div>
 
         {!collapsed && (
@@ -83,7 +84,6 @@ export default function Sidebar({
         ))}
       </nav>
 
-      {/* Collapse */}
       <div className={styles.footer}>
         <button
           type="button"
