@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, KeyboardEvent, FormEvent } from "react";
+import { Link2, ArrowUpRight } from "lucide-react";
 import styles from "./InputBar.module.css";
 import { UrlInputBarProps } from "./InputBar.types";
 
@@ -65,15 +66,7 @@ export default function InputBar({
         data-disabled={disabled || undefined}
       >
         <span className={styles.linkIcon} aria-hidden="true">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M6.5 9.5L9.5 6.5M6.75 4.25L7.4 3.6C8.508 2.492 10.302 2.492 11.41 3.6C12.518 4.708 12.518 6.502 11.41 7.61L10.76 8.26M9.25 11.75L8.6 12.4C7.492 13.508 5.698 13.508 4.59 12.4C3.482 11.292 3.482 9.498 4.59 8.39L5.24 7.74"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <Link2 size={16} strokeWidth={1.4} />
         </span>
 
         <input
@@ -100,15 +93,7 @@ export default function InputBar({
           disabled={disabled || !valid}
           aria-label="Send URL"
         >
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-            <path
-              d="M13.5 2.5L2.5 6.75L7.25 8.75M13.5 2.5L9.25 13.5L7.25 8.75M13.5 2.5L7.25 8.75"
-              stroke="currentColor"
-              strokeWidth="1.4"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
+          <ArrowUpRight size={16} strokeWidth={1.4} />
           <span className={styles.sendLabel}>Send</span>
         </button>
       </div>
