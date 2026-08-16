@@ -21,22 +21,23 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
       <body>
-        <Sidebar
-          sections={sections}
-          workspaceName="Scarlet"
-          workspaceSubtitle="An Automatic Footprinting tool"
-          workspaceIcon={
-            <img
-              src="/Icon.jpg"
-              alt="Scarlet"
-              width={20}
-              height={20}
-              style={{ borderRadius: 4 }}
-            />
-          }
-        />
-
-        <main>{children}</main>
+        <div style={{ display: "flex", height: "100vh" }}>
+          <Sidebar
+            sections={sections}
+            workspaceName="Scarlet"
+            workspaceSubtitle="An Automatic Footprinting tool"
+            workspaceIcon={
+              <img
+                src="/Icon.jpg"
+                alt="Scarlet"
+                width={20}
+                height={20}
+                style={{ borderRadius: 4 }}
+              />
+            }
+          />
+          <main style={{ flex: 1, overflowY: "auto" }}>{children}</main>
+        </div>
       </body>
     </html>
   );
