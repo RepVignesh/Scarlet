@@ -7,7 +7,7 @@ import {
   History,
   Settings,
 } from "lucide-react";
-import type { NavSection } from "@/app/components/Sidebar.types";
+import type { NavSection } from "@/app/components/Sidebar/Sidebar.types";
 
 export const sections: NavSection[] = [
   {

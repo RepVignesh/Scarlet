@@ -2,7 +2,7 @@
 import { Space_Grotesk, Inter } from "next/font/google";
 import type { ReactNode } from "react";
 import "./globals.css";
-import Sidebar from "@/app/components/Sidebar";
+import Sidebar from "@/app/components/Sidebar/Sidebar";
 import { sections } from "@/app/configs/Sections";
 
 const display = Space_Grotesk({
