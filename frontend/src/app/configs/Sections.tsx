@@ -30,12 +30,6 @@ export const sections: NavSection[] = [
         icon: <Globe size={20} />,
       },
       {
-        id: "whois",
-        label: "WHOIS Lookup",
-        href: "/modules/whois",
-        icon: <Search size={20} />,
-      },
-      {
         id: "dns",
         label: "DNS Records",
         href: "/modules/dns",
