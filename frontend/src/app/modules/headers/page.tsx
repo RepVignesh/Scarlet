@@ -41,7 +41,17 @@ export default function Headers() {
 
       {loading && <p>Loading...</p>}
 
-      {response && <HTTPHeadersCard data={response} />}
+      {response && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+          }}
+        >
+          <HTTPHeadersCard data={response} />
+        </div>
+      )}
     </div>
   );
 }

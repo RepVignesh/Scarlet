@@ -41,7 +41,17 @@ export default function DNS() {
 
       {loading && <p>Loading...</p>}
 
-      {response && <DNSRecordsCard data={response} />}
+      {response && (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "2rem",
+          }}
+        >
+          <DNSRecordsCard data={response} />
+        </div>
+      )}
     </div>
   );
 }
