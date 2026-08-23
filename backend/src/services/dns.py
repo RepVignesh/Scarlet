@@ -1,8 +1,10 @@
 import asyncio
 from typing import List
 
+from urllib.parse import urlparse
 import dns.asyncresolver
 import dns.resolver
+
 
 from ..schemas import DNSRecordType, DNSRecords, MXRecord
 
@@ -47,6 +49,10 @@ async def resolve_mx(
         return []
 
 async def get_dns_information(domain: str) -> DNSRecords:
+    if "://" in domain:
+        _domain = urlparse(domain)
+        domain = _domain.hostname or domain
+
     resolver = dns.asyncresolver.Resolver()
 
     a, aaaa, mx, cname, ns, txt = await asyncio.gather(
