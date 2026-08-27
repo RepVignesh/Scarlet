@@ -7,7 +7,7 @@ import {
   History,
   Settings,
 } from "lucide-react";
-import type { NavSection } from "@/app/components/Sidebar.types";
+import type { NavSection } from "@/app/components/Sidebar/Sidebar.types";
 
 export const sections: NavSection[] = [
   {
@@ -28,12 +28,6 @@ export const sections: NavSection[] = [
         label: "Domain Info",
         href: "/modules/domain",
         icon: <Globe size={20} />,
-      },
-      {
-        id: "whois",
-        label: "WHOIS Lookup",
-        href: "/modules/whois",
-        icon: <Search size={20} />,
       },
       {
         id: "dns",
