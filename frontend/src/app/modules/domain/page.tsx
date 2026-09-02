@@ -1,57 +1,38 @@
 "use client";
 
-import InputBar from "@/app/components/Inputs/InputBar";
 import { useState } from "react";
-import { Domain } from "@/app/interfaces/domain";
+import InputBar from "@/app/components/Inputs/InputBar";
+import PageHeader from "@/app/components/PageHeader";
 import DomainInfoCard from "@/app/components/Cards/DomainInfo/DomainInfoCard";
+import type { Domain } from "@/app/interfaces/domain";
+import { fetchJson } from "@/app/lib/api";
+import styles from "./page.module.css";
 
-export default function Headers() {
+export default function DomainPage() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<Domain>();
+  const [error, setError] = useState("");
 
   const getInformation = async (url: string) => {
     setLoading(true);
-
+    setError("");
+    setResponse(undefined);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_ENDPOINT}/domain/?url=${encodeURIComponent(url)}`,
-      );
-
-      const data = await res.json();
-
-      setResponse(data);
+      setResponse(await fetchJson<Domain>("/domain/", url));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to fetch domain information.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          paddingTop: "4rem",
-          height: "100%",
-        }}
-      >
-        <InputBar placeholder="Enter an URL" onSubmit={getInformation} />
-      </div>
-
-      {loading && <p>Loading...</p>}
-
-      {response && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "2rem",
-          }}
-        >
-          <DomainInfoCard data={response} />
-        </div>
-      )}
-    </div>
+    <main className={styles.page}>
+      <PageHeader title="Domain Information" description="Looks up WHOIS registration details such as registrar, dates, name servers, status, DNSSEC, and available contact information." />
+      <InputBar placeholder="Enter a domain, e.g. example.com" onSubmit={getInformation} disabled={loading} />
+      {loading && <p className={styles.state}>Looking up domain information…</p>}
+      {error && <p className={styles.error} role="alert">{error}</p>}
+      {response && <div className={styles.card}><DomainInfoCard data={response} /></div>}
+    </main>
   );
 }

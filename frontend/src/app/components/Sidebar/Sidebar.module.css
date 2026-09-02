@@ -329,3 +329,13 @@
     transition: none;
   }
 }
+
+@media (max-width: 700px) {
+  .sidebar, .sidebar.collapsed { width:100%; height:64px; flex-direction:row; position:sticky; top:0; z-index:20; border-right:0; border-bottom:1px solid var(--border); }
+  .header { padding:12px 14px; flex:1; }
+  .search, .nav, .footer { display:none; }
+  .workspaceSubtitle { display:none; }
+  .collapseButton { margin-left:auto; }
+  .collapseButton span { display:none; }
+  .collapseButton { width:32px; padding:0; justify-content:center; }
+}
