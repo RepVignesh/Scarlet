@@ -6,7 +6,7 @@ from ..services import get_domain_information, get_headers
 router = APIRouter(prefix="/domain", tags=["Domains"])
 
 
-@router.get("/", response_model=Domain)
+@router.get("", response_model=Domain)
 async def domain_information(url: str) -> Domain:
     try:
         return await get_domain_information(url)

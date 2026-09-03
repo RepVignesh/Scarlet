@@ -3,3 +3,4 @@ pydantic
 httpx
 python-whois
 dnspython
+uvicorn
