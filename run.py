@@ -1,9 +1,39 @@
 import subprocess
 import signal
 import sys
+from pathlib import Path
 
 
 processes = []
+
+ENDPOINT_FILE = Path("src/app/config/endpoint.ts")
+
+DEFAULT_ENDPOINT = '/api'
+LOCAL_ENDPOINT = 'http://localhost:8000'
+
+
+def _local_endpoint():
+    """Change the frontend API endpoint to the local backend."""
+    content = ENDPOINT_FILE.read_text()
+
+    content = content.replace(
+        f'const API_ENDPOINT = "{DEFAULT_ENDPOINT}";',
+        f'const API_ENDPOINT = "{LOCAL_ENDPOINT}";'
+    )
+
+    ENDPOINT_FILE.write_text(content)
+
+
+def _restore_endpoint():
+    """Restore the endpoint used for Vercel/production."""
+    content = ENDPOINT_FILE.read_text()
+
+    content = content.replace(
+        f'const API_ENDPOINT = "{LOCAL_ENDPOINT}";',
+        f'const API_ENDPOINT = "{DEFAULT_ENDPOINT}";'
+    )
+
+    ENDPOINT_FILE.write_text(content)
 
 
 def stop():
@@ -19,6 +49,8 @@ def stop():
         except subprocess.TimeoutExpired:
             process.kill()
 
+    _restore_endpoint()
+
 
 def signal_handler(sig, frame):
     stop()
@@ -30,6 +62,8 @@ signal.signal(signal.SIGTERM, signal_handler)
 
 
 try:
+    _local_endpoint()
+
     backend = subprocess.Popen(
         ["uvicorn", "api.index:app", "--reload"]
     )
