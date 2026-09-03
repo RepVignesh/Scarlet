@@ -88,7 +88,6 @@ function DevelopersSection() {
               <div className={styles.devInfo}>
                 <span className={styles.devName}>{dev.name ?? dev.login}</span>
                 <span className={styles.devUsername}>@{dev.login}</span>
-                {dev.bio && <span className={styles.devBio}>{dev.bio}</span>}
               </div>
             </a>
           ))}
@@ -148,6 +147,7 @@ export default function ActorSection() {
                 src="/Icon.jpg"
                 alt="Project Scarlet"
                 width={288}
+                loading="eager"
                 height={288}
                 className={styles.image}
               />
