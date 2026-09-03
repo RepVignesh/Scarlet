@@ -1,5 +1,4 @@
-const API_ENDPOINT =
-  process.env.NEXT_PUBLIC_ENDPOINT?.replace(/\/$/, "") || "http://localhost:8000";
+import API_ENDPOINT from "../configs/endpoint";
 
 export function apiUrl(path: string, url: string): string {
   return `${API_ENDPOINT}${path}?url=${encodeURIComponent(url)}`;
