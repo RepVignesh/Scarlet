@@ -147,3 +147,5 @@ web_modules/
 .temp/
 .docusaurus/
 .vuepress/dist/
+.vercel
+.env*
