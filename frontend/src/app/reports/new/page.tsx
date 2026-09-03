@@ -21,22 +21,34 @@ export default function Page() {
 
       {!report ? (
         <div className={styles.card}>
-          <p>Run a Full Scan first. The fetched results will appear here automatically.</p>
+          <p>
+            Run a Full Scan first. The fetched results will appear here
+            automatically.
+          </p>
         </div>
       ) : (
         <div className={styles.card}>
           <h2>Scan Report</h2>
           <div className={styles.meta}>
-            <div><strong>Target:</strong> {report.target}</div>
-            <div><strong>Scanned:</strong> {new Date(report.scannedAt).toLocaleString()}</div>
+            <div>
+              <strong>Target:</strong> {report.target}
+            </div>
+            <div>
+              <strong>Scanned:</strong>{" "}
+              {new Date(report.scannedAt).toLocaleString()}
+            </div>
           </div>
 
-          <button className={styles.download} onClick={() => downloadReport(report)}>
+          <button
+            className={styles.download}
+            onClick={() => downloadReport(report)}
+          >
             Download PDF Report
           </button>
 
           <p className={styles.note}>
-            The PDF contains text and tables only. No website screenshots, cards, or UI elements are included.
+            The PDF contains text and tables only. No website screenshots,
+            cards, or UI elements are included.
           </p>
         </div>
       )}

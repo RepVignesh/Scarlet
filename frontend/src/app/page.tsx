@@ -41,10 +41,25 @@ export default function Page() {
 
     const failures = results.filter((result) => result.status === "rejected");
     if (failures.length > 0) {
-      setError(`${failures.length} scan module${failures.length > 1 ? "s" : ""} failed. Check the API connection or target.`);
+      setError(
+        `${failures.length} scan module${failures.length > 1 ? "s" : ""} failed. Check the API connection or target.`,
+      );
     }
-    if (domainResult.status === "fulfilled" || dnsResult.status === "fulfilled" || headerResult.status === "fulfilled") {
-      const report: ScanReport = { id: `${Date.now()}`, target: url, scannedAt: new Date().toISOString(), domain: domainResult.status === "fulfilled" ? domainResult.value : undefined, dns: dnsResult.status === "fulfilled" ? dnsResult.value : undefined, headers: headerResult.status === "fulfilled" ? headerResult.value : undefined };
+    if (
+      domainResult.status === "fulfilled" ||
+      dnsResult.status === "fulfilled" ||
+      headerResult.status === "fulfilled"
+    ) {
+      const report: ScanReport = {
+        id: `${Date.now()}`,
+        target: url,
+        scannedAt: new Date().toISOString(),
+        domain:
+          domainResult.status === "fulfilled" ? domainResult.value : undefined,
+        dns: dnsResult.status === "fulfilled" ? dnsResult.value : undefined,
+        headers:
+          headerResult.status === "fulfilled" ? headerResult.value : undefined,
+      };
       saveReport(report);
     }
     setLoading(false);
@@ -52,11 +67,26 @@ export default function Page() {
 
   return (
     <main className={styles.page}>
-      <PageHeader title="Full Scan" description="Runs the Domain, DNS, and HTTP Header modules together and presents the results in one place." />
-      <InputBar placeholder="Enter a domain, e.g. example.com" onSubmit={fullScan} disabled={loading} />
+      <PageHeader
+        title="Full Scan"
+        description="Runs the Domain, DNS, and HTTP Header modules together and presents the results in one place."
+      />
+      <InputBar
+        placeholder="Enter a domain, e.g. example.com"
+        onSubmit={fullScan}
+        disabled={loading}
+      />
       {loading && <p className={styles.state}>Running full scan…</p>}
-      {error && <p className={styles.error} role="alert">{error}</p>}
-      {!loading && (domain || dns || headers) && <div className={styles.reportLink}><Link href="/reports/new">Generate Report from this Scan →</Link></div>}
+      {error && (
+        <p className={styles.error} role="alert">
+          {error}
+        </p>
+      )}
+      {!loading && (domain || dns || headers) && (
+        <div className={styles.reportLink}>
+          <Link href="/reports/new">Generate Report from this Scan →</Link>
+        </div>
+      )}
       <div className={styles.results}>
         {domain && <DomainInfoCard data={domain} />}
         {dns && <DNSRecordsCard data={dns} domain={target} />}
