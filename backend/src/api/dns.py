@@ -6,7 +6,7 @@ from ..services import get_dns_information
 router = APIRouter(prefix="/dns", tags=["DNS"])
 
 
-@router.get("/", response_model=DNSRecords)
+@router.get("", response_model=DNSRecords)
 async def dns_information(url: str) -> DNSRecords:
     try:
         return await get_dns_information(url)
