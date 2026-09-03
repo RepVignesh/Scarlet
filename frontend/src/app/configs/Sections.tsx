@@ -50,13 +50,13 @@ export const sections: NavSection[] = [
       {
         id: "generate-report",
         label: "Generate Report",
-        href: "/reports/new",
+        href: "/modules/reports/new",
         icon: <FileOutput size={20} />,
       },
       {
         id: "report-history",
         label: "Report History",
-        href: "/reports",
+        href: "/modules/reports",
         icon: <History size={20} />,
       },
     ],
