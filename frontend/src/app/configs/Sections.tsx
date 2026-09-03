@@ -1,21 +1,28 @@
 import {
   Globe,
-  Search,
   Network,
   FileCode,
   FileOutput,
   History,
   Settings,
+  House,
 } from "lucide-react";
 import type { NavSection } from "@/app/components/Sidebar/Sidebar.types";
 
 export const sections: NavSection[] = [
   {
+    title: "Main",
     items: [
+      {
+        id: "home",
+        label: "Home",
+        href: "/",
+        icon: <House size={20} />,
+      },
       {
         id: "full-scan",
         label: "Full Scan",
-        href: "/",
+        href: "/modules/full",
         icon: <Globe size={20} />,
       },
     ],
