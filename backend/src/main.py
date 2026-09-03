@@ -8,6 +8,7 @@ from .api.dns import router as dns_router
 
 app = FastAPI(
     title="Scarlet API",
+    root_path="/api",
     description="Automatic domain, DNS, and HTTP header footprinting API.",
 )
 
