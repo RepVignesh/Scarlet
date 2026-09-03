@@ -1,57 +1,38 @@
 "use client";
 
-import InputBar from "@/app/components/Inputs/InputBar";
 import { useState } from "react";
-import { DNSRecords } from "@/app/interfaces/domain";
+import InputBar from "@/app/components/Inputs/InputBar";
+import PageHeader from "@/app/components/PageHeader";
 import DNSRecordsCard from "@/app/components/Cards/DNSRecords/DNSRecordsCard";
+import type { DNSRecords } from "@/app/interfaces/domain";
+import { fetchJson } from "@/app/lib/api";
+import styles from "./page.module.css";
 
-export default function DNS() {
+export default function DNSPage() {
   const [loading, setLoading] = useState(false);
   const [response, setResponse] = useState<DNSRecords>();
+  const [error, setError] = useState("");
 
   const getInformation = async (url: string) => {
     setLoading(true);
-
+    setError("");
+    setResponse(undefined);
     try {
-      const res = await fetch(
-        `${process.env.NEXT_PUBLIC_ENDPOINT}/dns/?url=${encodeURIComponent(url)}`,
-      );
-
-      const data = await res.json();
-
-      setResponse(data);
+      setResponse(await fetchJson<DNSRecords>("/dns/", url));
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Unable to resolve DNS records.");
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "flex-start",
-          paddingTop: "4rem",
-          height: "100%",
-        }}
-      >
-        <InputBar placeholder="Enter an URL" onSubmit={getInformation} />
-      </div>
-
-      {loading && <p>Loading...</p>}
-
-      {response && (
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            marginTop: "2rem",
-          }}
-        >
-          <DNSRecordsCard data={response} />
-        </div>
-      )}
-    </div>
+    <main className={styles.page}>
+      <PageHeader title="DNS Records" description="Resolves the domain's A, AAAA, MX, CNAME, NS, and TXT records so you can inspect its DNS configuration." />
+      <InputBar placeholder="Enter a domain, e.g. example.com" onSubmit={getInformation} disabled={loading} />
+      {loading && <p className={styles.state}>Resolving DNS records…</p>}
+      {error && <p className={styles.error} role="alert">{error}</p>}
+      {response && <div className={styles.card}><DNSRecordsCard data={response} /></div>}
+    </main>
   );
 }
