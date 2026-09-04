@@ -21,6 +21,9 @@ const body = DM_Sans({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable}`}>
+      <head>
+        <title>Scarlet</title>
+      </head>
       <body>
         <div className="appShell">
           <Sidebar
