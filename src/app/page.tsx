@@ -53,11 +53,6 @@ function DevelopersSection() {
 
   return (
     <section className={styles.developersSection}>
-      <div className={styles.developersHeaderRow}>
-        <span className={styles.dot} />
-        <span className={styles.eyebrow}>Developers</span>
-      </div>
-
       <h2 className={styles.developersTitle}>Built by</h2>
       <p className={styles.developersSubtitle}>
         Three Developers behind a small project is interesting!.
@@ -103,20 +98,12 @@ export default function ActorSection() {
       <section className={styles.hero}>
         <div className={styles.heroGrid}>
           <div>
-            <div className={styles.eyebrowRow}>
-              <span className={styles.dot} />
-              <span className={styles.eyebrow}>
-                Automatic Footprinting Tool
-              </span>
-            </div>
-
             <h1 className={styles.heading}>
               Scarlet,{" "}
               <span className={styles.headingMuted}>
                 A Simple Footprinting Tool.
               </span>
             </h1>
-
             <p className={styles.subheading}>
               Project Scarlet gives beginners a minimalistic, modular
               footprinting toolkit to explore and learn about footprinting

@@ -7,7 +7,6 @@
   margin: 24px auto;
   padding: 28px;
   border: 1px solid #ddd;
-  border-radius: 16px;
   background: #fff;
 }
 .meta {
@@ -20,7 +19,7 @@
 .item button {
   padding: 11px 16px;
   border: 1px solid #222;
-  border-radius: 8px;
+  border-radius: 1px;
   background: #111;
   color: #fff;
   cursor: pointer;

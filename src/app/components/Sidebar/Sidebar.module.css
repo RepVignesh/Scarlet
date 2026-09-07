@@ -1,24 +1,27 @@
 .sidebar {
   --bg-sidebar: #ffffff;
-  --bg-hover: #f7f7f7;
-  --bg-active: #f0f0f0;
+  --bg-hover: #f6f6f6;
+  --bg-active: #ededed;
 
-  --border: #e5e5e5;
+  --border: #e3e3e3;
+
   --border-subtle: #eeeeee;
 
-  --text-primary: #111111;
-  --text-secondary: #555555;
-  --text-tertiary: #999999;
-
+  --text-primary: #0a0a0a;
+  --text-secondary: #4a4a4a;
+  --text-tertiary: #888888;
   --accent: #111111;
   --accent-soft: #f0f0f0;
-  --accent-soft-hover: #e5e5e5;
+  --accent-soft-hover: #e3e3e3;
 
-  --radius-sm: 6px;
+  --radius-sm: 0;
+
   --radius-md: 10px;
 
   --rail-x: 34px;
+
   --width-expanded: 264px;
+
   --width-collapsed: 76px;
 
   display: flex;
