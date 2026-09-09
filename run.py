@@ -1,6 +1,7 @@
 import subprocess
 import signal
 import sys
+import shutil
 from pathlib import Path
 
 
@@ -69,9 +70,13 @@ try:
     )
     processes.append(backend)
 
-    frontend = subprocess.Popen(
-        ["npm", "run", "dev"]
-    )
+    
+    npm_cmd = shutil.which("npm")
+    if npm_cmd is None:
+        print("npm not found on PATH", file=sys.stderr)
+        sys.exit(1)
+
+    frontend = subprocess.Popen([npm_cmd, "run", "dev"])
     processes.append(frontend)
 
     print()
