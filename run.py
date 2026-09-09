@@ -6,7 +6,7 @@ from pathlib import Path
 
 processes = []
 
-ENDPOINT_FILE = Path("src/app/config/endpoint.ts")
+ENDPOINT_FILE = Path("src/app/configs/endpoint.ts")
 
 DEFAULT_ENDPOINT = '/api'
 LOCAL_ENDPOINT = 'http://localhost:8000'
